@@ -117,6 +117,10 @@ function BreakoutGame() {
 	this.gameContainer.appendChild(this.navigation);
 
 	const eventKeydown = function(event) {
+		if (event.key === "Escape") {
+			that.destroy();
+			return;
+		}
 		if (that.gameOver || that.won) {
 			if (event.key === "r" || event.key === "R") {
 				resetGame();
@@ -142,9 +146,6 @@ function BreakoutGame() {
 			event.returnValue = false;
 			event.cancelBubble = true;
 			return false;
-		}
-		if (event.key === "Escape") {
-			that.destroy();
 		}
 	};
 	document.addEventListener("keydown", eventKeydown, false);

@@ -87,14 +87,15 @@ function PongGame() {
 	this.gameContainer.appendChild(this.navigation);
 
 	const eventKeydown = function(event) {
+		if (event.key === "Escape") {
+			that.destroy();
+			return;
+		}
 		if (that.gameOver || that.won) {
 			if (event.key === "r" || event.key === "R") {
 				resetGame();
 			}
 			return;
-		}
-		if (event.key === "Escape") {
-			that.destroy();
 		}
 		if (event.preventDefault) event.preventDefault();
 		if (event.stopPropagation) event.stopPropagation();

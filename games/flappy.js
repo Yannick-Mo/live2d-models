@@ -89,6 +89,10 @@ function FlappyGame() {
 	}
 
 	const eventKeydown = function(event) {
+		if (event.key === "Escape") {
+			that.destroy();
+			return;
+		}
 		if (that.gameOver) {
 			if (event.key === "r" || event.key === "R") {
 				resetGame();
@@ -102,9 +106,6 @@ function FlappyGame() {
 			event.returnValue = false;
 			event.cancelBubble = true;
 			return false;
-		}
-		if (event.key === "Escape") {
-			that.destroy();
 		}
 	};
 	document.addEventListener("keydown", eventKeydown, false);
